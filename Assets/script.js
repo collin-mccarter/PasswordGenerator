@@ -59,11 +59,14 @@ function generatePassword() {
     }
    }
 
+   var password = ''
+
    for (i = 0; i < passwordLength; i++) {
     var randomLetter = Math.floor(Math.random() * choiceArray.length);
-    var password = password + choiceArray[randomLetter];
+    password = password + choiceArray[randomLetter];
    }
 
+   console.log(password)
   return password; // store password as a variable
 }
 
