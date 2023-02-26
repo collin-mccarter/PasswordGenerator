@@ -11,11 +11,10 @@ generateBtn.addEventListener("click", writePassword); // on button click -> exec
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword(); // ? -> executes generatePassword function
+  var password = generatePassword(); // executes generatePassword function
   var passwordText = document.querySelector("#password"); // adds passwordText in the body under id = password
 
   passwordText.value = password; // displays password on the screen
-
 }
 
 // created generate password function
@@ -31,7 +30,7 @@ function generatePassword() {
     }
    }
    
-   // asking if lc characters should be included in password
+    // asking if lc characters should be included in password
    let passwordLowercase = confirm("Would you like lowercase characters included in your password?"); {
     if (passwordLowercase) { // if yes is clicked
       console.log(choiceArray = choiceArray.concat(lowercaseArray)); // visually see lowercase characters added to modified choiceArray
@@ -59,14 +58,16 @@ function generatePassword() {
     }
    }
 
-   var password = ''
+   var password = '' // presets password variable
 
+   // Random password for loop
    for (i = 0; i < passwordLength; i++) {
-    var randomLetter = Math.floor(Math.random() * choiceArray.length);
+    var randomLetter = Math.floor(Math.random() * choiceArray.length);  
     password = password + choiceArray[randomLetter];
    }
 
-   console.log(password)
+    console.log(password) // logs the password so I can see if it outputs correctly
+
   return password; // store password as a variable
 }
 
