@@ -6,6 +6,8 @@ var uppercaseArray = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O
 var numbersArray = ['0','1','2','3','4','5','6','7','8','9']; // all possible numbers
 var specialCharactersArray = ['!','"','#','$','%','&',"'",'(',')','*','+','-','.','/',':',';','<','=',">",'?','@','^','_','`','{','|','}','~']; // all special characters
 
+var choiceArray = []; // setting up blank array for data to be added to
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword); // on button click -> execute writePassword
 
@@ -17,12 +19,10 @@ function writePassword() {
   passwordText.value = password; // displays password on the screen
 }
 
-// created generate password function
-function generatePassword() {
-  var choiceArray = []; // setting up blank array for data to be added to
-
+// function for asking prompts
+function getUserdata() {
   // first prompt to determine password length
-    passwordLength = parseInt(prompt("How many characters do you want the password to be? (At least 8, no more than 128 characters)")); {
+  passwordLength = parseInt(prompt("How many characters do you want the password to be? (At least 8, no more than 128 characters)")); {
     // making sure password length is a reasonable number/length
     if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
       alert("Password must be at least 8 characters and no more than 128 characters");
@@ -30,8 +30,8 @@ function generatePassword() {
     }
    }
    
-    // asking if lc characters should be included in password
-   let passwordLowercase = confirm("Would you like lowercase characters included in your password?"); {
+  // asking if lc characters should be included in password
+  let passwordLowercase = confirm("Would you like lowercase characters included in your password?"); {
     if (passwordLowercase) { // if yes is clicked
       console.log(choiceArray = choiceArray.concat(lowercaseArray)); // visually see lowercase characters added to modified choiceArray
     }
@@ -58,20 +58,30 @@ function generatePassword() {
     }
    }
 
-   var password = '' // presets password variable
+   // console.log("choiceArray", choiceArray)
+
+    // if user selects all no
+    if (!passwordLowercase && !passwordUppercase && !passwordNumbers && !passwordSpecialCharacters) {
+      getUserdata()
+    }
+    return choiceArray
+}
+
+// created generate password function
+function generatePassword() {
+  var password = '' // presets password variable
 
    // Random password for loop
+   var data = getUserdata()
    for (i = 0; i < passwordLength; i++) {
-    var randomLetter = Math.floor(Math.random() * choiceArray.length);  
-    password = password + choiceArray[randomLetter];
+    var randomLetter = Math.floor(Math.random() * data.length);  
+    password = password + data[randomLetter];
    }
 
-    // console.log(password) // logs the password so I can see if it outputs correctly
+    console.log(password) // logs the password so I can see if it outputs correctly
 
-    if (password === undefined) {
-      return console.log("help");
-    } else {
-      return password; // store password as a variable
-    }
+   choiceArray = [] // resets choice array
+
+    return password // saves and stores password
 }
 
