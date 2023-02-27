@@ -31,5 +31,8 @@ THEN the password is either displayed in an alert or written to the page
 
 ## Screenshot
 
+<img src='./Assets/DeployedScreenshot.png' alt = "Screenshot Deployed" 
+style="max-width: 500px">
 
 ## Link to Deployed Application:
+https://collin-mccarter.github.io/PasswordGenerator/
