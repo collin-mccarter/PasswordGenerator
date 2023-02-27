@@ -22,7 +22,7 @@ function generatePassword() {
   var choiceArray = []; // setting up blank array for data to be added to
 
   // first prompt to determine password length
-  passwordLength = parseInt(prompt("How many characters do you want the password to be? (At least 8, no more than 128 characters)")); {
+    passwordLength = parseInt(prompt("How many characters do you want the password to be? (At least 8, no more than 128 characters)")); {
     // making sure password length is a reasonable number/length
     if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
       alert("Password must be at least 8 characters and no more than 128 characters");
@@ -66,8 +66,12 @@ function generatePassword() {
     password = password + choiceArray[randomLetter];
    }
 
-    console.log(password) // logs the password so I can see if it outputs correctly
+    // console.log(password) // logs the password so I can see if it outputs correctly
 
-  return password; // store password as a variable
+    if (password === undefined) {
+      return console.log("help");
+    } else {
+      return password; // store password as a variable
+    }
 }
 
